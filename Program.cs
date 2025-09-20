@@ -6,7 +6,7 @@ namespace Console_Blank_6
     {
         static void Main(string[] args)
         {
-            Question4();
+            Question6();
         }
         public static void Question1() 
         {
@@ -100,7 +100,7 @@ namespace Console_Blank_6
             int value = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Calculate additive or multiplicative persistence (a or m)?");
             string Operation = Console.ReadLine();
-            while (value > 9)
+            while (value > 9)  // while used instead of a for loop as count isn't within the condition.
             {
                 if (Operation == "a")
                 {
@@ -115,6 +115,52 @@ namespace Console_Blank_6
             Console.WriteLine("The persistence is: ");
             Console.WriteLine(count);
         }
+        public static void Question5() //shows the binary equvialent (unsinged integer).
+        {
+            int NumberOut = 0;
+            Console.WriteLine("Enter a positive whole number:");
+            int Numberin = Convert.ToInt32(Console.ReadLine());
+            int count = 0;
+            while (Numberin > 0)
+            {
+                count++;
+                int PartValue = Numberin % 2;
+                Numberin = Numberin / 2;
+                for (int i = 1; i <= count-1; i++)
+                {
+                    PartValue = PartValue * 10;
+                }
+                NumberOut = NumberOut + PartValue;
+            }
+            Console.WriteLine($"The output is: {NumberOut}");
+        }
+        public static void Question6() 
+        {
+            int c = 0;
+            int d = 0;
+            int s = 0;
+            int t = 0;
+            while (c<3 && d < 3)
+            {
+                t = t + 1;
+                Random rnd = new Random();
+                int N1 = rnd.Next(1,7);
+                int N2 = rnd.Next(1,7);
+                Console.WriteLine(N1 + ", "+ N2);
+                s = s + N1 + N2;
+                if (N1 == 6 || N2 == 6)
+                {
+                    c++;
+                }
+                if (N1 == N2)
+                {
+                    d++;
+                }
+            }
+            int a = s / (t * 2);
+            Console.WriteLine($"{c}, {d}, {a}");
+        }
+
 
     }
 }
